@@ -78,7 +78,7 @@ void setup() {
   Serial.println(ssid);
   
   WiFi.begin(ssid, password);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -91,6 +91,7 @@ void setup() {
   Serial.println("Server started");
 
   // Print the IP address
+  Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
   strip.begin();
   strip.setPixelColor(0, strip.Color(0,  20,  0));
@@ -123,7 +124,8 @@ void loop() {
   }
   
   // Wait until the client sends some data
-  Serial.println("new client");
+  Serial.println("");
+  Serial.println("New client");
   while(!client.available()){
     delay(1);
   }
@@ -173,7 +175,7 @@ void loop() {
   }
 
   if (state == INVALID && index > 3) {
-    Serial.println("invalid request");
+    Serial.println("Invalid request");
     client.stop();
     return;
   } else {
