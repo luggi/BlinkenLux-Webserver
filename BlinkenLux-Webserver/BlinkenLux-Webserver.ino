@@ -197,8 +197,6 @@ void loop() {
   s += " <a href=\"/LED/100/100/100\">White</a> </br>";
   s += " <a href=\"/LED/0/0/0\">OFF</a> </html>\n";
 
-//s += "<!DOCTYPEhtml> <html> <body>  <tableid=\"tableled\"style=\"width:100%\">  </table>  <script> function buildtable(){ varnode=document.getElementById(\"tableled\"); var row=\"\"; for(i=0;i<3;i++){ row+=\"<tr>\"; for(j=0;j<3;j++){ row+=\"<td>\"; row+=\"<table>\"+\"LED\"+(i*3+(j+1)); for(k=0;k<3;k++){ row+=\"<tr><td>\"; var array=[\"R\",\"G\",\"B\"]; var arraycolor=[\"red\",\"green\",\"blue\"] row+='<inputtype=\"range\"id=\"'+(i*3+(j+1))+array[k]+'\"value=\"0\"style=\"background:'+arraycolor[k]+';\">' row+=\"</td></tr>\"; } row+=\"</table>\"; row+=\"</td>\"; } row+=\"</tr>\"; } console.log(row); node.innerHTML=row; }  function sendleds(event){ var id=parseInt(event.id,10); var red=Math.floor(document.getElementById(id+\"R\").value*255/100); var green=Math.floor(document.getElementById(id+\"G\").value*255/100); var blue=Math.floor(document.getElementById(id+\"B\").value*255/100); var url=\"/LEDS/\"+(id-1)+\"/\"+red+\"/\"+green+\"/\"+blue; console.log(url); var ajax=newXMLHttpRequest(); ajax.open(\"GET\",url); ajax.send(null); }  buildtable(); var nodes=document.getElementsByTagName(\"input\"); for(i=0;i<nodes.length;i++){ nodes[i].addEventListener(\"change\",function(){sendleds(this);}); }  </script>  </body> </html> ":
-
   // Send the response to the client
   client.print(s);
   delay(1);
